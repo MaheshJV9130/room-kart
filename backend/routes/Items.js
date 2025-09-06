@@ -5,11 +5,15 @@ import { fetchItems } from '../controllers/fetch-items.controller.js';
 import { fetchProduct } from '../controllers/fetch-product.controller.js';
 import { fetchSeller } from '../controllers/fetch-seller.controller.js';
 import { verifyJWT } from '../middleware/verifyJWT.js';
+import { fetchListings } from '../controllers/fetch-user-listings.controller.js';
+import { deleteProduct } from '../controllers/delete.controller.js';
 const upload = multer()
 const router = express.Router()
 
 router.post("/sell-item",verifyJWT,upload.array("productImages",3),sellItem)
 router.get("/fetch-items",fetchItems)
-router.get("/product/:id",fetchProduct)
+router.get("/product/:id",verifyJWT,fetchProduct)
 router.post("/seller",fetchSeller)
+router.get('/listings',verifyJWT ,fetchListings)
+router.delete('/delete',verifyJWT,deleteProduct)
 export default router
