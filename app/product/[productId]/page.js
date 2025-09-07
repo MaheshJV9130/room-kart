@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import ItemCardLoader from "@/components/ItemCardLoader";
+import Loader from "@/components/Loader";
 const Product = () => {
   const router = useRouter();
   const params = useParams();
@@ -48,7 +48,7 @@ const Product = () => {
   return (
     <section className="min-h-screen w-full flex justify-center px-10 py-10 bg-gray-50">
       {isLoading ? (
-        <ItemCardLoader />
+        <Loader />
       ) : (
         <div className="flex w-full max-w-6xl gap-10  justify-center items-center">
           {/* Left Thumbnails */}

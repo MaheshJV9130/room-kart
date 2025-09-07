@@ -1,31 +1,45 @@
 "use client";
-import ItemCardLoader from "@/components/ItemCardLoader";
+
+import Loader from "@/components/Loader";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FiEdit, FiTrash2, FiPlus } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const MyListing = () => {
   const [listings, setListings] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter()
+  const deleteProduct = async (id) => {
+    if(confirm("Are you really want to delete this product ?")){let req = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/item/delete`,
+      {
+        method: "DELETE",
+        body: JSON.stringify({ productId: id }),
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      }
+    );
+    req = await req.json();
+    if (req.status === 200) {
+      toast.success(req.message);
+      document.location.reload()
+    } else {
+      toast.error(req.message);
+    }}
+  };
 
-
-  const deleteProduct = async(id) => {
-    let req = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/item/delete`,{method:"DELETE", body:JSON.stringify({productId:id}),headers:{"Content-Type":"application/json"},credentials:"include"})
-    req = await req.json()
-    console.log(req)
-  } 
-  
   const fetchListing = async () => {
-
     let req = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/item/listings`,
       { credentials: "include" }
     );
 
     req = await req.json();
-    console.log(req)
+
     setListings(req);
-    setIsLoading(false)
+    setIsLoading(false);
   };
   useEffect(() => {
     fetchListing();
@@ -46,10 +60,12 @@ const MyListing = () => {
         </div>
 
         {/* Listings Grid */}
-          {!isLoading && listings.length === 0  &&<p className="text-center text-2xl m-2 p-2">No Product for sell</p>}
+        {!isLoading && listings.length === 0 && (
+          <p className="text-center text-2xl m-2 p-2">No Product for sell</p>
+        )}
+          {isLoading && <Loader />}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {isLoading&&<ItemCardLoader/>}
-          {listings.map((item,index) => (
+          {listings.map((item, index) => (
             <div
               key={index}
               className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition"
@@ -74,8 +90,11 @@ const MyListing = () => {
                   <button className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200">
                     <FiEdit />
                   </button>
-                  
-                  <button onClick={()=>deleteProduct(item._id)} className="p-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-600">
+
+                  <button
+                    onClick={() => deleteProduct(item._id)}
+                    className="p-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-600"
+                  >
                     <FiTrash2 />
                   </button>
                 </div>
