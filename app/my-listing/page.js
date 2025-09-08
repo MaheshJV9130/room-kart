@@ -87,7 +87,7 @@ const MyListing = () => {
 
                 {/* Actions */}
                 <div className="flex justify-end gap-3 mt-3">
-                  <button className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200">
+                  <button onClick={()=>router.push(`/edit/${item._id}`)} className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200">
                     <FiEdit />
                   </button>
 

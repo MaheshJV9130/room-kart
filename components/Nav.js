@@ -37,13 +37,13 @@ const Nav = () => {
   }, [path]);
 
   return (
-    <nav className="h-16 bg-gray-100 text-black flex justify-between px-10 items-center">
+    <nav className="h-16 bg-gray-100 text-black flex justify-between px-2 md:px-10 items-center">
       <Link href={"/"}>
-        <h1 href="/" className="text-blue-600 text-3xl font-bold">
+        <h1 href="/" className="text-blue-600  md:text-3xl font-bold">
           RoomKart
         </h1>
       </Link>
-      <ol className="flex justify-between gap-5 items-center">
+      <ol className="flex justify-between md:gap-5 gap-3 text-xs md:text-base items-center">
         <li>
           <Link href="/">Home</Link>
         </li>

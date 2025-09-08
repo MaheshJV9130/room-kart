@@ -6,7 +6,7 @@ const SearchItems = () => {
   const path = usePathname();
   if (path === "/") {
     return (
-      <form className=" flex items-center gap-10 justify-center bg-gray-100 my-2 py-2">
+      <form className=" hidden md:flex items-center border text-xs border-red-500 md:gap-10 justify-center bg-gray-100 my-2 py-2 shrink-0">
         <div className="flex border-2 rounded-xs">
           <input
             type="text"
@@ -17,7 +17,7 @@ const SearchItems = () => {
             <FaMagnifyingGlass size={25} />
           </button>
         </div>
-        <select name="" id="" className="font-bold outline-0">
+        <select name="" id="" className="md:font-bold text-xs outline-0">
           <option value="all">All Category</option>
           <option value="furniture">Furniture</option>
           <option value="electronics">Electronics & Appliances</option>

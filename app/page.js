@@ -24,11 +24,11 @@ export default function Home() {
   return (
     <main>
       <section className="mx-auto p-4 min-h-screen">
-        {products.length === 0 ? (
+        {!loading && products.length === 0 ? (
           <img src="/nopr.jpg" className="w-screen object-cover h-1/2" />
         ) : (
-          <h2 className="text-2xl font-bold mx-2 text-center m-4">
-            Recommended
+          <h2 className="md:text-2xl text-xl font-bold mx-2 text-center m-4">
+            New Arrivals
           </h2>
         )}
 

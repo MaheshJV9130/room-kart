@@ -71,9 +71,9 @@ const uploadForm = async (form) => {
     <main className="min-h-screen flex justify-center items-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="max-w-1/2 mx-auto border my-3 border-black/20 w-1/2 p-4 rounded-xl"
+        className="md:max-w-1/2 w-[80%] mx-auto border my-3 border-black/20 p-4 rounded-xl"
       >
-        <h1 className="text-center text-3xl font-bold m-4 ">
+        <h1 className="text-center text-xl md:text-3xl font-bold m-4 ">
           Submit a Product For Sell
         </h1>
 

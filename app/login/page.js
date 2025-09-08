@@ -78,7 +78,7 @@ const Login = () => {
       {isLoggin && (
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="max-w-sm mx-auto border border-black/20 w-1/2 p-4 rounded-xl"
+          className="md:max-w-sm w-[80%] mx-auto border border-black/20  p-4 rounded-xl"
         >
           <h1 className="text-center text-3xl font-bold m-4 ">Welcome Back</h1>
           <div className="mb-5">
@@ -137,7 +137,7 @@ const Login = () => {
       {!isLoggin && (
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="max-w-sm mx-auto my-5 border border-black/20 w-1/2 p-4 rounded-xl"
+          className="md:max-w-sm mx-auto my-5 border border-black/20 w-[80%] p-4 rounded-xl"
         >
           <h1 className="text-center text-3xl font-bold m-4 ">
             Create Your Account
