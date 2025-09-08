@@ -7,8 +7,9 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "test": "npx nodemon"
-    
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "build": "echo 'No build step needed'"
   },
   "dependencies": {
     "@colors/colors": "^1.6.0",
