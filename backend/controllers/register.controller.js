@@ -6,8 +6,8 @@ import User from "../models/User.js";
 
 export const register = async (req, res) => {
   database();
-  const { name, email, password, hostel , number} = req.body;
-
+  const { name, email, password, hostel, number } = req.body;
+  const isProd = process.env.NODE_ENV === "production";
   // checking for user(email) is already in db;
 
   const alreadyUser = await User.findOne({
@@ -24,12 +24,12 @@ export const register = async (req, res) => {
     const OTP = otpGen();
     const OTPEXP = Date.now() + 5 * 60 * 1000;
     const hash = await hashConverter(password);
-    
+
     // store otp in db
     const newUser = new User({
       name: name,
       email: email,
-      number:number,
+      number: number,
       hash: hash,
       hostel: hostel,
       otp: OTP,
@@ -37,15 +37,19 @@ export const register = async (req, res) => {
     });
     // new user save to db
     await newUser.save();
-    const token = getJWT({ _id:newUser._id , name: name, email: email, hostel: hostel });
-    
+    const token = getJWT({
+      _id: newUser._id,
+      name: name,
+      email: email,
+      hostel: hostel,
+    });
+
     res.cookie("session", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: isProd,
+      sameSite: isProd ? "none" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.json({ status: 200, message: "Welcome" });
   }
 };
-
