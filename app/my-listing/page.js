@@ -1,6 +1,7 @@
 "use client";
 
 import Loader from "@/components/Loader";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -70,9 +71,11 @@ const MyListing = () => {
               key={index}
               className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition"
             >
-              <img
+              <Image
                 src={item.images[0]}
                 alt={item.title}
+                width={192}
+                height={192}
                 className="h-48 w-full object-contain "
               />
 

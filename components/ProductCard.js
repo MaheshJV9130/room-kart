@@ -1,11 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const ProductCard = ({id , image , desc , title , price }) => {
   return ( 
     <div className="border border-black/20 md:w-[20%] max-w-[80%] max-h-[25rem] p-3 rounded-2xl shadow-md flex justify-between flex-col gap-2">
-      <img
+      <Image
         src={image}
+        alt={image}
+        width={160}
+        height={160}
         className="h-40 w-full object-contain mb-2 rounded-lg"
       />
 

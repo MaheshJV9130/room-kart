@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { BiSolidImageAdd } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 const Sell = () => {
   const [productPrev, setProductPrev] = useState([]);
   const [images, setImages] = useState([]);
@@ -178,7 +179,7 @@ const uploadForm = async (form) => {
               <label className="cursor-pointer flex justify-center items-center gap-2" htmlFor="images">
                 {productPrev.length===0&&<BiSolidImageAdd size={120}/>}
                 {productPrev.map(img=>(
-                  <img key={img} src={img} className="w-32 h-32 rounded-xl object-cover" alt="img"/>
+                  <Image key={img} src={img} width={128} height={128} className="w-32 h-32 rounded-xl object-cover" alt="img"/>
                 ))}
               </label>
               <input

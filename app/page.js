@@ -1,6 +1,7 @@
 "use client";
 import Loader from "@/components/Loader";
 import ProductCard from "@/components/ProductCard";
+import Image from "next/image";
 
 import { useEffect, useState } from "react";
 
@@ -25,7 +26,7 @@ export default function Home() {
     <main>
       <section className="mx-auto p-4 min-h-screen">
         {!loading && products.length === 0 ? (
-          <img src="/nopr.jpg" className="w-screen object-cover h-1/2" />
+          <Image src="/nopr.jpg" className="w-screen object-cover h-1/2" width={300} height={300} alt="nopr"/>
         ) : (
           <h2 className="md:text-2xl text-xl font-bold mx-2 text-center m-4">
             New Arrivals

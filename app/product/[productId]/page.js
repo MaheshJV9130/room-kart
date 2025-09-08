@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader";
+import Image from "next/image";
 const Product = () => {
   const router = useRouter();
   const params = useParams();
@@ -54,7 +55,10 @@ const Product = () => {
           {/* Left Thumbnails */}
           <div className="flex flex-col gap-4 ">
             {images.map((img, idx) => (
-              <img
+              <Image
+                width={80}
+                height={80}
+                alt="pr"
                 key={idx}
                 src={img}
                 onClick={() => setSelectedImage(img)}
@@ -67,7 +71,10 @@ const Product = () => {
 
           {/* Main Product Image */}
           <div className="flex-1 flex justify-center items-start">
-            <img
+            <Image
+              alt="pr"
+              width={70}
+              height={70}
               src={selectedImage}
               className="w-[70%] h-auto object-contain  rounded-lg shadow-sm"
             />

@@ -1,9 +1,10 @@
+import Image from 'next/image'
 import React from 'react'
 
 const Loader = () => {
   return (
     <div>
-      <img src="/loader.gif" alt="loader" className='mx-auto mix-blend-multiply'/>
+      <Image src="/loader.gif" alt="loader" width={500} height={500} className='mx-auto mix-blend-multiply'/>
     </div>
   )
 }

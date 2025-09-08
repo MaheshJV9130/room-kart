@@ -121,7 +121,7 @@ const Login = () => {
             </button>
           </div>
           <div className="text-center text-xs m-2">
-            <p>Don't have an account?</p>
+            <p>Don&apos;t have an account?</p>
             <button
               className="cursor-pointer text-blue-600"
               onClick={formHandle}
