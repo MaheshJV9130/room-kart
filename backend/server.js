@@ -4,7 +4,7 @@ import { configDotenv } from "dotenv";
 import auth from "./routes/User.js";
 import items from "./routes/Items.js";
 import path from "path";
-import {v2 as cloudinary} from 'cloudinary'
+import { v2 as cloudinary } from "cloudinary";
 import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
@@ -18,27 +18,39 @@ configDotenv({
   path: envPath,
 });
 const app = express();
-cloudinary.config({ 
-  cloud_name: process.env.CLD_NAME, 
-  api_key: process.env.CLD_API_KEY, 
-  api_secret: process.env.CLD_API_SECRET
+cloudinary.config({
+  cloud_name: process.env.CLD_NAME,
+  api_key: process.env.CLD_API_KEY,
+  api_secret: process.env.CLD_API_SECRET,
 });
 app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true }));
-const allowedOrigins = ["http://localhost:3000", "https://roomkart.vercel.app"];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://roomkart.vercel.app",
+  /\.vercel\.app$/, // allow all vercel deployments
+];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true); // allow non-browser clients like Postman
+
+      if (
+        allowedOrigins.some((o) =>
+          o instanceof RegExp ? o.test(origin) : o === origin
+        )
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS: " + origin));
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Hello World...!");
