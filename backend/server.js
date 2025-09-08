@@ -27,13 +27,19 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-    methods: ["GET", "POST", "DELETE", "PUT"],
-  })
-);
+const allowedOrigins = ["http://localhost:3000", "https://roomkart.vercel.app"];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
+
 app.get("/", (req, res) => {
   res.send("Hello World...!");
 });
