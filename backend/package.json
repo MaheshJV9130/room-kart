@@ -8,6 +8,7 @@
   "main": "server.js",
   "scripts": {
     "test": "npx nodemon"
+    
   },
   "dependencies": {
     "@colors/colors": "^1.6.0",
@@ -23,5 +24,9 @@
     "mongoose": "^8.18.0",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.5"
+  },
+  "devDependencies": {
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1"
   }
 }
