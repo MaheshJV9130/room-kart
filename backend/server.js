@@ -36,7 +36,7 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin) return callback(null, true); // allow non-browser clients like Postman
+      if (!origin) return callback(null, true); 
 
       if (
         allowedOrigins.some((o) =>
