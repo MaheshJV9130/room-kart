@@ -51,6 +51,15 @@ app.use(
 app.get("/", (req, res) => {
   res.send("Hello World...!");
 });
+app.get("/test-cookie", (req, res) => {
+  res.cookie("session", "TEST123", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/",
+  });
+  res.send("cookie set");
+});
 app.use("/auth", auth);
 app.use("/item", items);
 app.listen(8080, () => {

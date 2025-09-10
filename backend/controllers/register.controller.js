@@ -46,10 +46,10 @@ export const register = async (req, res) => {
 
     res.cookie("session", token, {
       httpOnly: true,
-      secure: isProd,
-      sameSite: isProd ? "none" : "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
-      path:"/"
+      path: "/",
     });
     res.json({ status: 200, message: "Welcome" });
   }
