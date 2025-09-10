@@ -37,7 +37,7 @@ const Product = () => {
       );
       req2 = await req2.json();
       setSeller(req2);
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
   useEffect(() => {

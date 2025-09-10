@@ -22,8 +22,8 @@ export const login = async (req, res) => {
       });
       res.cookie("session", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: "none",
+        secure: isProd, // ✅ only true in prod
+        sameSite: isProd ? "none" : "lax", // ✅ dev works without HTTPS
         maxAge: 7 * 24 * 60 * 60 * 1000,
         path: "/",
       });
