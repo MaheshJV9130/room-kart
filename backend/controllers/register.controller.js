@@ -44,13 +44,13 @@ export const register = async (req, res) => {
       hostel: hostel,
     });
 
-    res.cookie("session", token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      path: "/",
-      domain: ".vercel.app",
-    });
+   res.cookie("session", token, {
+        httpOnly: true,
+        secure: isProd,
+        sameSite: isProd ? "none" : "lax",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        path: "/",
+      });
     res.json({ status: 200, message: "Welcome" });
   }
 };

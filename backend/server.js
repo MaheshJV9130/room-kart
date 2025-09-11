@@ -27,21 +27,33 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true }));
-const allowedOrigins = ["http://localhost:3000", "https://roomkart.vercel.app"];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://roomkart.vercel.app",
+  /\.vercel\.app$/, // allow all vercel deployments
+];
 
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+
+      if (
+        allowedOrigins.some((o) =>
+          o instanceof RegExp ? o.test(origin) : o === origin
+        )
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS: " + origin));
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Hello World...!");
-});
-app.get("/test-cookie", (req, res) => {
-  res.cookie("session", "TEST123", {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
-    path: "/",
-  });
-  res.send("cookie set");
 });
 app.use("/auth", auth);
 app.use("/item", items);
