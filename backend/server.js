@@ -30,25 +30,13 @@ app.use(express.urlencoded({ extended: true }));
 const allowedOrigins = [
   "http://localhost:3000",
   "https://roomkart.vercel.app",
-  /\.vercel\.app$/, // allow all vercel deployments
+  /\.vercel\.app$/,
 ];
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-
-      if (
-        allowedOrigins.some((o) =>
-          o instanceof RegExp ? o.test(origin) : o === origin
-        )
-      ) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS: " + origin));
-      }
-    },
-    credentials: true,
+    origin:allowedOrigins,
+    credentials:true
   })
 );
 
