@@ -27,16 +27,12 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true }));
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://roomkart.vercel.app",
-  /\.vercel\.app$/,
-];
+
 
 app.use(
   cors({
-    origin:allowedOrigins,
-    credentials:true
+    origin: 'https://roomkart.vercel.app',  
+    credentials: true 
   })
 );
 
