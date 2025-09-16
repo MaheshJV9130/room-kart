@@ -22,10 +22,9 @@ export const login = async (req, res) => {
       });
       res.cookie("session", token, {
         httpOnly: true,
-        secure: true, 
-        sameSite: "None", 
-        domain: "vercel.app",
-        maxAge: 7 * 24 * 60 * 60 * 1000,
+  secure: true,
+  sameSite: "None",
+  maxAge: 7 * 24 * 60 * 60 * 1000
       });
 
       res.json({ status: 200, message: "Welcome" });
