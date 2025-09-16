@@ -1,4 +1,6 @@
 export const me = (req , res) => {
-  
-  res.send({status:200 , data:req.user})
+  if (!req.user) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  res.status(200).send({ status: 200, data: req.user });
 }

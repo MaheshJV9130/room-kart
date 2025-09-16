@@ -25,7 +25,10 @@ cloudinary.config({
 });
 app.use(bodyParser.json());
 app.use(cookieParser());
-
+app.use('/auth', (req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store'); // Disable caching
+  next();
+});
 app.use(express.urlencoded({ extended: true }));
 
 
