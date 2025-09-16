@@ -29,10 +29,7 @@ app.use('/auth', (req, res, next) => {
   res.setHeader('Cache-Control', 'no-store'); // Disable caching
   next();
 });
-app.use('/item', (req, res, next) => {
-  res.setHeader('Cache-Control', 'no-store'); // Disable caching
-  next();
-});
+
 app.use(express.urlencoded({ extended: true }));
 
 

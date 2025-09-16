@@ -7,10 +7,13 @@ export async function middleware(req) {
   const publicPath = ["/login","/"];
 
   if (!token && !publicPath.includes(path)) {
+    console.log(token , "this is token")
     return NextResponse.redirect(new URL('/login', req.url))
   }
 
  if(token && path === "/login"){
+    console.log(token , "this is token")
+
     return NextResponse.redirect(new URL('/', req.url))
 
  }
