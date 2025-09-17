@@ -26,7 +26,7 @@ export default function Home() {
     <main>
       <section className="mx-auto p-4 min-h-screen">
         {!loading && products.length === 0 ? (
-          <img src="/nopr.jpg" className="w-screen object-contain h-screen md:h-1/2" width={300} height={300} alt="nopr"/>
+          <p className="text-xl md:text-3xl text-center leading-[90vh]">No Product Found 🙄</p>
         ) : (
           <h2 className="md:text-2xl text-xl font-bold mx-2 text-center m-4">
             New Arrivals

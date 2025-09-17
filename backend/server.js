@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: 'https://roomkart.vercel.app',  
+    origin: process.env.NODE_ENV ? 'https://roomkart.vercel.app' :'http://localhost:3000',  
     credentials: true 
   })
 );
