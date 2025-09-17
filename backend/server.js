@@ -26,7 +26,7 @@ cloudinary.config({
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use('/auth', (req, res, next) => {
-  res.setHeader('Cache-Control', 'no-store'); // Disable caching
+  res.setHeader('Cache-Control', 'no-store'); 
   next();
 });
 
