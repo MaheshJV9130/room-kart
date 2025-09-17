@@ -16,7 +16,7 @@ const Product = () => {
   const [isLoading, setIsLoading] = useState(true);
   const getProduct = async () => {
     let req = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/item/product/${productId}`,
+      `/api/item/product/${productId}`,
       { credentials: "include" }
     );
     req = await req.json();
@@ -27,7 +27,7 @@ const Product = () => {
       setImages(req.images);
       setSelectedImage(req.images[0]);
       let req2 = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/item/seller`,
+        `/api/item/seller`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

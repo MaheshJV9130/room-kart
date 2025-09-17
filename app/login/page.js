@@ -15,7 +15,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const login = async (data) => {
-    let req = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`, {
+    let req = await fetch(`/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -44,7 +44,7 @@ const Login = () => {
       }
       clearErrors()
     let req = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`,
+      `/api/auth/register`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

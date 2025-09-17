@@ -44,7 +44,7 @@ const Sell = () => {
 const uploadForm = async (form) => {
       
       let req = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/item/sell-item`,
+        `/api/item/sell-item`,
         { method: "POST", credentials: "include", body: form }
       );
       req = await req.json();

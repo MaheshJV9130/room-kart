@@ -10,7 +10,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const fetchProducts = async () => {
     let req = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/item/fetch-items`,
+      `/api/item/fetch-items`,
       { credentials: "include" }
     );
     req = await req.json();

@@ -14,7 +14,7 @@ const MyListing = () => {
   const router = useRouter()
   const deleteProduct = async (id) => {
     if(confirm("Are you really want to delete this product ?")){let req = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/item/delete`,
+      `/api/item/delete`,
       {
         method: "DELETE",
         body: JSON.stringify({ productId: id }),
@@ -33,7 +33,7 @@ const MyListing = () => {
 
   const fetchListing = async () => {
     let req = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/item/listings`,
+      `/api/item/listings`,
       { credentials: "include" }
     );
 

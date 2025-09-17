@@ -7,7 +7,7 @@ const Nav = () => {
   const router = useRouter();
   const [user, setUser] = useState(false);
   const fetchUserData = async () => {
-    let req = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/me`, {
+    let req = await fetch(`/api/auth/me`, {
       credentials: "include",
     });
 
@@ -22,7 +22,7 @@ const Nav = () => {
   const logoutFun = async () => {
     if (confirm("Are you really want logout?")) {
       let req = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`,
+        `/api/auth/logout`,
         { credentials: "include" }
       );
       req = await req.json();

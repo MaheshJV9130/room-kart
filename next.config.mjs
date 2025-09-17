@@ -8,11 +8,12 @@ const nextConfig = {
       },
     ],
   },
-   async rewrites() {
+ async rewrites() {
     return [
       {
-        source: '/api/:path*',
-        destination: 'https://room-kart.onrender.com/:path*', // The URL of your backend
+        source: "/api/:path*", 
+        destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/:path*`, 
+      
       },
     ];
   },
