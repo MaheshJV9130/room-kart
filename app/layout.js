@@ -1,9 +1,10 @@
-import { Poppins  } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import SearchItems from "@/components/SearchItems";
 import Footer from "@/components/Footer";
 import { Slide, ToastContainer } from "react-toastify";
+import Analytics from "@/components/Analytics";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -20,23 +21,25 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} antialiased `}>
-        <ToastContainer
-          position="top-right"
-          autoClose={1500}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-          transition={Slide}
-        />
-        <Nav />
-        {/* <SearchItems /> */}
-        {children}
-        <Footer />
+        <Analytics>
+          <ToastContainer
+            position="top-right"
+            autoClose={1500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            transition={Slide}
+          />
+          <Nav />
+          {/* <SearchItems /> */}
+          {children}
+          <Footer />
+        </Analytics>
       </body>
     </html>
   );
