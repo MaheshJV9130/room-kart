@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 import SearchItems from "@/components/SearchItems";
 import Footer from "@/components/Footer";
 import { Slide, ToastContainer } from "react-toastify";
-import Analytics from "@/components/Analytics";
+import { Analytics } from "@vercel/analytics/next"
 
 const poppins = Poppins({
   variable: "--font-poppins",
