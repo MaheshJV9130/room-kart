@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.variable} antialiased `}>
         <ToastContainer
           position="top-right"
-          autoClose={700}
+          autoClose={1500}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick={false}

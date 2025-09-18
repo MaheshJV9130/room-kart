@@ -5,3 +5,4 @@ export const hashConverter = async (password) => {
 const hash = await bcrypt.hash(password, salt);
 return hash
 };
+

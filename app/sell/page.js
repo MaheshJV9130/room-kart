@@ -54,6 +54,8 @@ const uploadForm = async (form) => {
         router.push('/')
       }else{
         toast.error(req.message)
+        router.push("/sell")
+        setIsSub(false)
       }
     }
   const onSubmit = (data) => {
@@ -176,7 +178,7 @@ const uploadForm = async (form) => {
           </div>
           <div className="flex justify-start my-2 gap-3 items-center">
             <div>
-              <label className="cursor-pointer flex justify-center items-center gap-2" htmlFor="images">
+              <label className="cursor-pointer flex flex-wrap justify-center items-center gap-2" htmlFor="images">
                 {productPrev.length===0&&<BiSolidImageAdd size={120}/>}
                 {productPrev.map(img=>(
                   <Image key={img} src={img} width={128} height={128} className="w-32 h-32 rounded-xl object-cover" alt="img"/>

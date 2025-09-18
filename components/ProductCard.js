@@ -2,30 +2,42 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const ProductCard = ({id , image , desc , title , price }) => {
-  return ( 
-    <div className="border border-black/20 md:w-[20%] max-w-[80%] max-h-[25rem] p-3 rounded-2xl shadow-md flex justify-between flex-col gap-2">
-      <Image
-        src={image}
-        alt={image}
-        width={160}
-        height={160}
-        className="h-40 w-full object-contain mb-2 rounded-lg"
-      />
+const ProductCard = ({ id, image, desc, title, price }) => {
+  return (
+    <div className="border border-black/20 w-full sm:w-[48%] md:w-[30%] lg:w-[22%] p-4 rounded-2xl shadow-md flex flex-col gap-3 transition hover:shadow-lg">
+      {/* Product Image */}
+      <div className="flex justify-center">
+        <Image
+          src={image}
+          alt={title}
+          width={200}
+          height={200}
+          className="h-32 sm:h-40 md:h-44 lg:h-48 w-auto object-contain rounded-lg"
+        />
+      </div>
 
-      <h3 className="text-lg font-bold truncate">
+      {/* Title */}
+      <h3 className="text-base sm:text-lg font-bold truncate text-center">
         {title}
       </h3>
 
-      <p className="text-sm text-gray-500 line-clamp-2">
-       {desc}
+      {/* Description */}
+      <p className="text-xs sm:text-sm text-gray-500 line-clamp-2 text-center">
+        {desc}
       </p>
 
-      <span className="mx-auto text-xl font-semibold text-blue-600  px-2 py-1  w-fit">
+      {/* Price */}
+      <span className="mx-auto text-lg sm:text-xl font-semibold text-blue-600">
         ₹{price}
       </span>
-    <Link className="border bg-blue-600 hover:bg-blue-500/90 p-2 rounded-xl font-bold text-white" href={`/product/${id}`}>Buy</Link>
-      
+
+      {/* Buy Button */}
+      <Link
+        href={`/product/${id}`}
+        className="border bg-blue-600 hover:bg-blue-500/90 p-2 rounded-xl font-bold text-white text-center"
+      >
+        Buy
+      </Link>
     </div>
   );
 };

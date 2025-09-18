@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader";
 import Image from "next/image";
+
 const Product = () => {
   const router = useRouter();
   const params = useParams();
@@ -14,11 +14,12 @@ const Product = () => {
   const [seller, setSeller] = useState({});
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const getProduct = async () => {
-    let req = await fetch(
-      `/api/item/product/${productId}`,
-      { credentials: "include" }
-    );
+    let req = await fetch(`/api/item/product/${productId}`, {
+      credentials: "include",
+    });
     req = await req.json();
     if (req.status == 404) {
       router.push("/my-listing");
@@ -26,34 +27,30 @@ const Product = () => {
       setProduct(req);
       setImages(req.images);
       setSelectedImage(req.images[0]);
-      let req2 = await fetch(
-        `/api/item/seller`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ sellerId: req.seller }),
-        }
-      );
+      let req2 = await fetch(`/api/item/seller`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ sellerId: req.seller }),
+      });
       req2 = await req2.json();
       setSeller(req2);
       setIsLoading(false);
     }
   };
+
   useEffect(() => {
     getProduct();
   }, []);
 
-  const [selectedImage, setSelectedImage] = useState(images[0]);
-
   return (
-    <section className="min-h-screen w-full flex justify-center px-10 py-10 bg-gray-50">
+    <section className="min-h-screen w-full flex justify-center px-4 sm:px-10 py-10 bg-gray-50">
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="flex w-full max-w-6xl gap-10  justify-center items-center">
-          {/* Left Thumbnails */}
-          <div className="flex flex-col gap-4 ">
+        <div className="flex flex-col md:flex-row w-full max-w-6xl gap-6 md:gap-10">
+          {/* Thumbnails */}
+          <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-visible">
             {images.map((img, idx) => (
               <Image
                 width={80}
@@ -62,7 +59,7 @@ const Product = () => {
                 key={idx}
                 src={img}
                 onClick={() => setSelectedImage(img)}
-                className={`w-20 h-20 object-contain border-2 rounded-lg cursor-pointer p-1 ${
+                className={`w-20 h-20 object-contain border-2 rounded-lg cursor-pointer p-1 shrink-0 ${
                   selectedImage === img ? "border-blue-600" : "border-gray-300"
                 }`}
               />
@@ -73,10 +70,10 @@ const Product = () => {
           <div className="flex-1 flex justify-center items-start">
             <Image
               alt="pr"
-              width={70}
-              height={70}
+              width={500}
+              height={500}
               src={selectedImage}
-              className="w-[70%] h-auto object-contain  rounded-lg shadow-sm"
+              className="w-full md:w-[70%] h-auto object-contain rounded-lg shadow-sm"
             />
           </div>
 
@@ -95,8 +92,6 @@ const Product = () => {
               </li>
               <li>Contact : {seller.number}</li>
             </ul>
-
-            {/* Buy Box */}
 
             <Link
               href={`https://wa.me/+91${seller.number}?text=Hi ${seller.name}, I am interested in your ${product.title}`}
