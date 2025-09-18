@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} antialiased `}>
-        <Analytics>
+       
           <ToastContainer
             position="top-right"
             autoClose={1500}
@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
           {/* <SearchItems /> */}
           {children}
           <Footer />
-        </Analytics>
+       
       </body>
     </html>
   );
