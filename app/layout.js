@@ -20,6 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <link rel="shortcut icon" href="logo-png.png" type="image" />
       <body className={`${poppins.variable} antialiased `}>
        
           <ToastContainer
