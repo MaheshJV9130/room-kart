@@ -1,29 +1,34 @@
-'use client'
-import Loader from '@/components/Loader'
-import ProductCard from '@/components/ProductCard'
-import { useRouter, useSearchParams } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+"use client";
+import Loader from "@/components/Loader";
+import ProductCard from "@/components/ProductCard";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { Suspense, useEffect, useState } from "react";
 // id, image, desc, title, price
 const Search = () => {
-  const [loading, setLoading] = useState(true)
-  const router = useRouter()
-  const [products, setProducts] = useState([])
-    const params = useSearchParams()
-    const fetch_searched_product = async()=>{
-      router.refresh()
-        let req = await fetch(`/api/item/search?${params}`,{credentials:"include"})
-        req = await req.json()
-        setProducts(req.data)
-        setLoading(false)
-    }
-    useEffect(() => {
-      fetch_searched_product()
-    }, [])
-    
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const [products, setProducts] = useState([]);
+  const params = useSearchParams();
+  const fetch_searched_product = async () => {
+    router.refresh();
+    let req = await fetch(`/api/item/search?${params}`, {
+      credentials: "include",
+    });
+    req = await req.json();
+    setProducts(req.data);
+    setLoading(false);
+  };
+  useEffect(() => {
+    fetch_searched_product();
+  }, []);
+
   return (
-  <section className="mx-auto p-4 min-h-screen">
+    <Suspense>
+      <section className="mx-auto p-4 min-h-screen">
         {!loading && products.length === 0 ? (
-          <p className="text-xl md:text-3xl text-center leading-[90vh]">No Product Found 🙄</p>
+          <p className="text-xl md:text-3xl text-center leading-[90vh]">
+            No Product Found 🙄
+          </p>
         ) : (
           <h2 className="md:text-2xl text-xl font-bold mx-2 text-center m-4">
             Results :
@@ -44,7 +49,8 @@ const Search = () => {
           ))}
         </div>
       </section>
-  )
-}
+    </Suspense>
+  );
+};
 
-export default Search
+export default Search;
