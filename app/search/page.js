@@ -12,7 +12,6 @@ const SearchContent = () => {
   const params = useSearchParams();
 
   const fetch_searched_product = async () => {
-    router.refresh();
     let req = await fetch(`/api/item/search?${params}`, {
       credentials: "include",
     });

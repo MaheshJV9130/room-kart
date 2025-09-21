@@ -10,7 +10,7 @@ const SearchItems = () => {
   const [query, setQuery] = useState("")
   const search = async(e) => {
     e.preventDefault()
-    location.reload(`/search?q=${query}`)
+    router.push(`/search?q=${query}`)
   }
   
   if (path === "/" || path === "/search") {
