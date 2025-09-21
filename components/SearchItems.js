@@ -12,6 +12,15 @@ const SearchItems = () => {
     e.preventDefault()
     router.push(`/search?q=${query}`)
   }
+  const category = async(e) => {
+    e.preventDefault()
+    if(e.target.value === "all"){
+      router.push('/')
+    }else{
+
+      router.push(`/search?q=${e.target.value}`)
+    }
+  }
   
   if (path === "/" || path === "/search") {
     return (
@@ -35,6 +44,7 @@ const SearchItems = () => {
 
         {/* Category Select */}
         <select
+        onChange={category}
           className="w-full md:w-auto p-2 md:p-3 text-sm md:text-base border rounded-lg bg-white shadow-sm cursor-pointer outline-none"
         >
           <option value="all">All Categories</option>
