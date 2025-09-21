@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛒 RoomKart
 
-## Getting Started
+RoomKart is a modern **e-commerce platform** built using the **MERN stack + Next.js**.  
+It allows users to explore, search, and manage products seamlessly — designed with performance, scalability, and user experience in mind.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎯 Motive
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The main idea behind RoomKart is:
+- To **learn and practice full-stack web development** using **Next.js, Express, MongoDB, and Node.js**.
+- To build a **real-world e-commerce solution** where users can:
+  - Browse and search products easily.
+  - Manage their own listings.
+  - Experience a smooth UI with responsive design.
+- To prepare a solid base for adding advanced features like **authentication, payments, and multi-vendor support** in the future.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Features
 
-## Learn More
+- **Product Listings**  
+  Users can view products with details like name, price, description, and images.
 
-To learn more about Next.js, take a look at the following resources:
+- **Search Functionality**  
+  A responsive search system to quickly find products.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **User Listings**  
+  Add, edit, and delete your own product listings.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Responsive UI**  
+  Mobile-first design with **Tailwind CSS** for a clean and modern look.
 
-## Deploy on Vercel
+- **Authentication (NextAuth)**  
+  Google login support for secure sign-in (work in progress).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Backend with Express + MongoDB**  
+  REST API for product and user data.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Error Handling & Fixes**  
+  Solved issues like cookie authentication and optimized product rendering.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js, React, Tailwind CSS  
+- **Backend**: Node.js, Express.js  
+- **Database**: MongoDB Atlas  
+- **Authentication**: NextAuth (Google OAuth)  
+- **Hosting**: Vercel (Frontend), Render/Other (Backend)
+
+---
+
+## 🚩 Problems RoomKart Solves
+
+- **For Users**:  
+  - Easily discover products with a smooth search experience.  
+  - Manage and showcase personal product listings.  
+
+- **For Developers (Motive)**:  
+  - Understand how to integrate **frontend + backend + database** in a real-world project.  
+  - Solve practical issues like cookies, deployment errors, and API integration.  
+  - Hands-on practice in building scalable web applications.  
+
+---
+
+## 🚀 Roadmap
+
+- [ ] Implement cart & checkout flow.  
+- [ ] Add payment gateway integration.  
+- [ ] Improve search with filters & categories.  
+- [ ] Multi-user roles (Admin, Seller, Buyer).  
+- [ ] Advanced security & testing.  
+
+---
+
+## 🤝 Contribution
+
+Contributions, issues, and feature requests are welcome!  
+Feel free to fork this repo and submit a PR 🙌
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
