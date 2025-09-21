@@ -41,6 +41,7 @@ const Footer = () => {
     <hr className="my-6 border-gray-300 sm:mx-auto lg:my-8" />
     <span className="block text-sm  sm:text-center">
       © {year}
+      {" "}
       <a href="#" className="hover:underline  font-semibold">
         RoomKart™
       </a>

@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
             transition={Slide}
           />
           <Nav />
-          {/* <SearchItems /> */}
+          <SearchItems />
           {children}
           <Footer />
        

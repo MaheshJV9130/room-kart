@@ -7,6 +7,7 @@ import { fetchSeller } from '../controllers/fetch-seller.controller.js';
 import { verifyJWT } from '../middleware/verifyJWT.js';
 import { fetchListings } from '../controllers/fetch-user-listings.controller.js';
 import { deleteProduct } from '../controllers/delete.controller.js';
+import { search } from '../controllers/search.controller.js';
 const upload = multer()
 const router = express.Router()
 
@@ -16,4 +17,5 @@ router.get("/product/:id",verifyJWT,fetchProduct)
 router.post("/seller",fetchSeller)
 router.get('/listings',verifyJWT ,fetchListings)
 router.delete('/delete',verifyJWT,deleteProduct)
+router.get('/search',search)
 export default router
